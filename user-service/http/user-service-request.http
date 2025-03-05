@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
   "name": "Dowon Lee",
-  "email": "edowon0623@naver.com",
+  "email": "edowon0623@gmail.com",
   "pwd": "12345678"
 }
 
@@ -13,7 +13,7 @@ POST {{base-url}}:8000/user-service/login
 Content-Type: application/json
 
 {
-  "email": "edowon0623@naver.com",
+  "email": "edowon0623@gmail.com",
   "password": "12345678"
 }
 > {%
@@ -37,8 +37,8 @@ POST {{base-url}}:8000/order-service/{{user-id}}/orders
 Content-Type: application/json
 
 {
-  "productId": "CATALOG-003",
-  "qty": 10,
+  "productId": "CATALOG-001",
+  "qty": 70,
   "unitPrice": 1200
 }
 

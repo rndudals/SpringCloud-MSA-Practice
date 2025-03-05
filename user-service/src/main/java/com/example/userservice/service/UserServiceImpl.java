@@ -1,12 +1,10 @@
 package com.example.userservice.service;
 
-import com.example.userservice.client.CatalogServiceClient;
 import com.example.userservice.client.OrderServiceClient;
 import com.example.userservice.dto.UserDto;
 import com.example.userservice.jpa.UserEntity;
 import com.example.userservice.jpa.UserRepository;
 import com.example.userservice.vo.ResponseOrder;
-import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -34,7 +32,7 @@ public class UserServiceImpl implements UserService {
     RestTemplate restTemplate;
 
     OrderServiceClient orderServiceClient;
-    CatalogServiceClient catalogServiceClient;
+//    CatalogServiceClient catalogServiceClient;
 
     CircuitBreakerFactory circuitBreakerFactory;
 
@@ -56,14 +54,14 @@ public class UserServiceImpl implements UserService {
                            Environment env,
                            RestTemplate restTemplate,
                            OrderServiceClient orderServiceClient,
-                           CatalogServiceClient catalogServiceClient,
+//                           CatalogServiceClient catalogServiceClient,
                            CircuitBreakerFactory circuitBreakerFactory) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.env = env;
         this.restTemplate = restTemplate;
         this.orderServiceClient = orderServiceClient;
-        this.catalogServiceClient = catalogServiceClient;
+//        this.catalogServiceClient = catalogServiceClient;
         this.circuitBreakerFactory = circuitBreakerFactory;
     }
 
@@ -117,16 +115,16 @@ public class UserServiceImpl implements UserService {
 
         /* Using a feign client */
         /* #2 Feign exception handling */
-        try {
-//            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
-//            ordersList = _ordersList.getBody();
-            ordersList = orderServiceClient.getOrders(userId);
-        } catch (FeignException ex) {
-            log.error(ex.getMessage());
-        }
+//        try {
+////            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
+////            ordersList = _ordersList.getBody();
+//            ordersList = orderServiceClient.getOrders(userId);
+//        } catch (FeignException ex) {
+//            log.error(ex.getMessage());
+//        }
 
         /* #3-1 ErrorDecoder */
-//        ordersList = orderServiceClient.getOrders(userId);
+        ordersList = orderServiceClient.getOrders(userId);
 //        CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitBreaker1");
 //        CircuitBreaker circuitBreaker2 = circuitBreakerFactory.create("circuitBreaker2");
 //        ordersList = circuitBreaker.run(() -> orderServiceClient.getOrders(userId),
