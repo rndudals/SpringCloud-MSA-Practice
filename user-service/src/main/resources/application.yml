@@ -1,5 +1,5 @@
 server:
-  port: 60000
+  port: 50000
 
 spring:
 #  config:
@@ -12,7 +12,6 @@ spring:
   zipkin:
     base-url: http://localhost:9411
     enabled: true
-
 #  rabbitmq:
 #    host: 127.0.0.1
 #    port: 5672
@@ -65,11 +64,15 @@ management:
   zipkin:
     tracing:
       endpoint: http://localhost:9411/api/v2/spans
-
   endpoints:
     web:
       exposure:
         include: "*"
+
+order-service:
+  url: http://ORDER-SERVICE/order-service/%s/orders
+  exception:
+    order-is-empty: User's order is empty.
 
 #gateway:
 #  ip: 10.204.136.204
