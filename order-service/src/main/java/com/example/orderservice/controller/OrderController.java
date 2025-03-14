@@ -83,16 +83,16 @@ public class OrderController {
             result.add(new ModelMapper().map(v, ResponseOrder.class));
         });
 
-        try {
-            Random rnd = new Random();
-            int value = rnd.nextInt(5);
-            if (value % 2 == 0) {
-                Thread.sleep(10000);
-                throw new Exception("장애 발생");
-            }
-        } catch(InterruptedException ex) {
-            log.warn(ex.getMessage());
-        }
+//        try {
+//            Random rnd = new Random();
+//            int value = rnd.nextInt(5);
+//            if (value % 2 == 0) {
+//                Thread.sleep(10000);
+//                throw new Exception("장애 발생");
+//            }
+//        } catch(InterruptedException ex) {
+//            log.warn(ex.getMessage());
+//        }
 
         // info - debug - warn - error - fatal
         log.debug("Add retrieved orders data");
