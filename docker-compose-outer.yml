@@ -1,32 +1,34 @@
-version: '3.8'  # Docker Compose 버전
-
 services:
   # 1) config-service
   config-service:
-    image: config-service:1.0
+    image: 99koo/config-service:lgcns_1
     container_name: config-service
     ports:
       - "8888:8888"
     environment:
       - encrypt.key-store.location=file:/apiEncryptionKey.jks
+
     networks:
       - ecommerce-network
 
   # 2) service-discovery
   service-discovery:
-    image: service-discovery:1.0
+    image: 99koo/service-discovery:lgcns_1
     container_name: service-discovery
     ports:
       - "8761:8761"
+    depends_on:
+      - config-service
     networks:
       - ecommerce-network
 
   # 3) apigateway-service
   apigateway-service:
-    image: apigateway-service:1.0
+    image: 99koo/apigateway-service:lgcns_1
     container_name: apigateway-service
     ports:
       - "8000:8000"
+    depends_on: service-discovery
     networks:
       - ecommerce-network
 

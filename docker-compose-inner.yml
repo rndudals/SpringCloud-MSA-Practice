@@ -1,6 +1,7 @@
 services:
   user-service:
     image: 99koo/user-service:lgcns_1
+    container_name: user-service
     # ports:
     #   - "60000:60000"
     environment:
@@ -16,6 +17,7 @@ services:
 
   order-service:
     image: 99koo/order-service:lgcns_1
+    container_name: order-service
     environment:
       spring.rabbitmq.host: rabbitmq
       spring.zipkin.base-url: http://zipkin-zipkin-1:9411
@@ -27,6 +29,7 @@ services:
 
   catalog-service:
     image: 99koo/catalog-service:lgcns_1
+    container_name: catalog-service
     environment:
       spring.zipkin.base-url: http://zipkin-zipkin-1:9411
       eureka.client.service-url.defaultZone: http://service-discovery:8761/eureka/
