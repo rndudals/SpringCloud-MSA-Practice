@@ -10,7 +10,7 @@ spring:
     config:
       server:
         native:
-          search-locations: file:///C://work//git-local-repo
+          search-locations: file:///Users/kooyeongmin/LGcns/git-local-repo
         git: #default
           uri: https://github.com/joneconsulting/spring-cloud-config
 #          uri: file:///C://Work//git-local-repo
